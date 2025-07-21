@@ -27,6 +27,12 @@ module.exports = defineConfig({
     databaseUrl: process.env.DATABASE_URL,
     databaseName: 'defaultdb',
     redisUrl: process.env.REDIS_URL,
+    databaseDriverOptions:{
+      ssl: {
+        rejectUnauthorized: false,
+        // ca: fs.readFileSync(join(__dirname, 'cert.crt')).toString(),
+      }
+    },
 
     http: {
       storeCors: process.env.STORE_CORS!,
