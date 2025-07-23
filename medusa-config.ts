@@ -1,8 +1,8 @@
-import { loadEnv, defineConfig } from '@medusajs/framework/utils'
-import fs from 'fs'
-import { join } from 'path'
+import { loadEnv, defineConfig } from "@medusajs/framework/utils";
+import fs from "fs";
+import { join } from "path";
 
-loadEnv(process.env.NODE_ENV || 'development', process.cwd())
+loadEnv(process.env.NODE_ENV || "development", process.cwd());
 
 // const DB_USERNAME = process.env.DB_USERNAME;
 // const DB_PASSWORD = process.env.DB_PASSWORD;
@@ -23,15 +23,18 @@ module.exports = defineConfig({
     disable: process.env.DISABLE_MEDUSA_ADMIN === "true",
   },
   projectConfig: {
-    workerMode: process.env.MEDUSA_WORKER_MODE as "shared" | "worker" | "server",
+    workerMode: process.env.MEDUSA_WORKER_MODE as
+      | "shared"
+      | "worker"
+      | "server",
     databaseUrl: process.env.DATABASE_URL,
-    databaseName: 'defaultdb',
+    databaseName: "defaultdb",
     redisUrl: process.env.REDIS_URL,
-    databaseDriverOptions:{
+    databaseDriverOptions: {
       ssl: {
         rejectUnauthorized: false,
         // ca: fs.readFileSync(join(__dirname, 'cert.crt')).toString(),
-      }
+      },
     },
 
     http: {
@@ -40,7 +43,7 @@ module.exports = defineConfig({
       authCors: process.env.AUTH_CORS!,
       jwtSecret: process.env.JWT_SECRET || "supersecret",
       cookieSecret: process.env.COOKIE_SECRET || "supersecret",
-    }
+    },
   },
   modules: [
     {
@@ -63,6 +66,51 @@ module.exports = defineConfig({
         },
       },
     },
+    {
+      resolve: "@medusajs/medusa/file",
+      options: {
+        providers: [
+          {
+            resolve: "@medusajs/medusa/file-s3",
+            id: "s3",
+            options: {
+              file_url: process.env.S3_FILE_URL,
+              access_key_id: process.env.S3_ACCESS_KEY_ID,
+              secret_access_key: process.env.S3_SECRET_ACCESS_KEY,
+              region: process.env.S3_REGION,
+              bucket: process.env.S3_BUCKET,
+              endpoint: process.env.S3_ENDPOINT,
+            },
+          },
+        ],
+      },
+    },
+    {
+      resolve: "@medusajs/medusa/payment",
+      options: {
+        providers: [
+          {
+            resolve: "medusa-plugin-razorpay-v2/providers/payment-razorpay/src",
+            id: "razorpay",
+            options: {
+              key_id:
+                process?.env?.RAZORPAY_TEST_KEY_ID ?? process?.env?.RAZORPAY_ID,
+              key_secret:
+                process?.env?.RAZORPAY_TEST_KEY_SECRET ??
+                process?.env?.RAZORPAY_SECRET,
+              razorpay_account:
+                process?.env?.RAZORPAY_TEST_ACCOUNT ??
+                process?.env?.RAZORPAY_ACCOUNT,
+              automatic_expiry_period: 30 /* any value between 12minuts and 30 days expressed in minutes*/,
+              manual_expiry_period: 20,
+              refund_speed: "normal",
+              webhook_secret:
+                process?.env?.RAZORPAY_TEST_WEBHOOK_SECRET ??
+                process?.env?.RAZORPAY_WEBHOOK_SECRET,
+            },
+          },
+        ],
+      },
+    },
   ],
-
-})
+});

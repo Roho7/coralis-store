@@ -5823,6 +5823,15 @@ axios@^0.21.4:
   dependencies:
     follow-redirects "^1.14.0"
 
+axios@^1.6.8:
+  version "1.10.0"
+  resolved "https://registry.yarnpkg.com/axios/-/axios-1.10.0.tgz#af320aee8632eaf2a400b6a1979fa75856f38d54"
+  integrity sha512-/1xYAC4MP/HEG+3duIhFr4ZQXR4sQXOIe+o6sdqzeykGLx6Upp/1p8MHqhINOvGeP7xyNHe7tsiJByc4SSVUxw==
+  dependencies:
+    follow-redirects "^1.15.6"
+    form-data "^4.0.0"
+    proxy-from-env "^1.1.0"
+
 axios@^1.7.4:
   version "1.7.9"
   resolved "https://registry.yarnpkg.com/axios/-/axios-1.7.9.tgz#d7d071380c132a24accda1b2cfc1535b79ec650a"
@@ -8667,6 +8676,13 @@ media-typer@0.3.0:
   resolved "https://registry.yarnpkg.com/media-typer/-/media-typer-0.3.0.tgz#8710d7af0aa626f8fffa1ce00168545263255748"
   integrity sha512-dq+qelQ9akHpcOl/gUVRTxVIOkAJ1wR3QAvb4RsVjS8oVoFjDGTc679wJYmUmknUF5HwMLOgb5O+a3KxfWapPQ==
 
+medusa-plugin-razorpay-v2@^0.1.2:
+  version "0.1.2"
+  resolved "https://registry.yarnpkg.com/medusa-plugin-razorpay-v2/-/medusa-plugin-razorpay-v2-0.1.2.tgz#bdb95e34be615c10023f2fae3852f67ad563acd0"
+  integrity sha512-zQkwqj1+Rf6f8Cq6siTat+bcJrbEkw/DI/mFTjTmknVrR1PPoVJRAr2Cag86ofxkCN4rss9+u7+SjF3YF2x9IA==
+  dependencies:
+    razorpay "^2.9.6"
+
 merge-descriptors@1.0.3:
   version "1.0.3"
   resolved "https://registry.yarnpkg.com/merge-descriptors/-/merge-descriptors-1.0.3.tgz#d80319a65f3c7935351e5cfdac8f9318504dbed5"
@@ -9588,6 +9604,13 @@ raw-body@2.5.2:
     http-errors "2.0.0"
     iconv-lite "0.4.24"
     unpipe "1.0.0"
+
+razorpay@^2.9.6:
+  version "2.9.6"
+  resolved "https://registry.yarnpkg.com/razorpay/-/razorpay-2.9.6.tgz#475bc8b80851e7d153685af218279ed1d3aa649f"
+  integrity sha512-zsHAQzd6e1Cc6BNoCNZQaf65ElL6O6yw0wulxmoG5VQDr363fZC90Mp1V5EktVzG45yPyNomNXWlf4cQ3622gQ==
+  dependencies:
+    axios "^1.6.8"
 
 react-aria@^3.33.1:
   version "3.37.0"
