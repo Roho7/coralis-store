@@ -21,6 +21,7 @@ loadEnv(process.env.NODE_ENV || "development", process.cwd());
 module.exports = defineConfig({
   admin: {
     disable: process.env.DISABLE_MEDUSA_ADMIN === "true",
+    backendUrl: process.env.MEDUSA_BACKEND_URL,
   },
   projectConfig: {
     workerMode: process.env.MEDUSA_WORKER_MODE as
@@ -29,14 +30,12 @@ module.exports = defineConfig({
       | "server",
     databaseUrl: process.env.DATABASE_URL,
     databaseName: "defaultdb",
+    databaseLogging: true,
     redisUrl: process.env.REDIS_URL,
-    databaseDriverOptions: {
-      ssl: {
-        rejectUnauthorized: false,
-        // ca: fs.readFileSync(join(__dirname, 'cert.crt')).toString(),
-      },
-    },
-
+    databaseDriverOptions:
+      process.env.NODE_ENV !== "development"
+        ? { connection: { ssl: { rejectUnauthorized: false } } }
+        : {},
     http: {
       storeCors: process.env.STORE_CORS!,
       adminCors: process.env.ADMIN_CORS!,
