@@ -1,4 +1,4 @@
-import { loadEnv, defineConfig } from "@medusajs/framework/utils";
+import { loadEnv, defineConfig, Modules } from "@medusajs/framework/utils";
 import fs from "fs";
 import { join } from "path";
 
@@ -42,8 +42,11 @@ module.exports = defineConfig({
       authCors: process.env.AUTH_CORS!,
       jwtSecret: process.env.JWT_SECRET || "supersecret",
       cookieSecret: process.env.COOKIE_SECRET || "supersecret",
+
     },
   },
+
+  plugins: ["medusa-plugin-razorpay-v2"],
   modules: [
     {
       resolve: "@medusajs/medusa/cache-redis",
@@ -86,6 +89,9 @@ module.exports = defineConfig({
     },
     {
       resolve: "@medusajs/medusa/payment",
+      dependencies: [
+        Modules.PAYMENT
+      ],
       options: {
         providers: [
           {
