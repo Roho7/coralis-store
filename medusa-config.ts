@@ -46,7 +46,7 @@ module.exports = defineConfig({
     },
   },
 
-  plugins: ["medusa-plugin-razorpay-v2"],
+  plugins: ["medusa-plugin-razorpay-rh"],
   modules: [
     {
       resolve: "@medusajs/medusa/cache-redis",
@@ -95,7 +95,7 @@ module.exports = defineConfig({
       options: {
         providers: [
           {
-            resolve: "medusa-plugin-razorpay-v2/providers/payment-razorpay/src",
+            resolve: "medusa-plugin-razorpay-rh/providers/payment-razorpay/src",
             id: "razorpay",
             options: {
               key_id:
