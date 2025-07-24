@@ -8676,10 +8676,10 @@ media-typer@0.3.0:
   resolved "https://registry.yarnpkg.com/media-typer/-/media-typer-0.3.0.tgz#8710d7af0aa626f8fffa1ce00168545263255748"
   integrity sha512-dq+qelQ9akHpcOl/gUVRTxVIOkAJ1wR3QAvb4RsVjS8oVoFjDGTc679wJYmUmknUF5HwMLOgb5O+a3KxfWapPQ==
 
-medusa-plugin-razorpay-v2@^0.1.2:
-  version "0.1.2"
-  resolved "https://registry.yarnpkg.com/medusa-plugin-razorpay-v2/-/medusa-plugin-razorpay-v2-0.1.2.tgz#bdb95e34be615c10023f2fae3852f67ad563acd0"
-  integrity sha512-zQkwqj1+Rf6f8Cq6siTat+bcJrbEkw/DI/mFTjTmknVrR1PPoVJRAr2Cag86ofxkCN4rss9+u7+SjF3YF2x9IA==
+medusa-plugin-razorpay-rh@^0.0.1:
+  version "0.0.1"
+  resolved "https://registry.yarnpkg.com/medusa-plugin-razorpay-rh/-/medusa-plugin-razorpay-rh-0.0.1.tgz#fcbf8907de5192761329f2a37c82b334eebf416a"
+  integrity sha512-+QLjO0OuDgkCqWJPx/JVQB4DC2O4qXaeQoRObG8gEsXlc2WF1RZXJNAP8v3BuGVLrzVM000FYj2HNm+RFQtcEw==
   dependencies:
     razorpay "^2.9.6"
 
